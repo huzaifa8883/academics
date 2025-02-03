@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { RiSearchLine, RiNotificationLine, RiCloseLine, RiMenuLine, RiChatSmileLine,RiChatQuoteLine } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaUserGraduate, FaChalkboardTeacher, FaChalkboard,FaBookOpen,FaLinkedin,FaTwitter,FaEnvelope ,FaCalendarAlt,FaClock,FaUser} from 'react-icons/fa';
-
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import CountUp from "react-countup";
 import "slick-carousel/slick/slick.css";
@@ -415,6 +415,7 @@ function App() {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedAge, setSelectedAge] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
 
   const enhancedSubjects = [
     {
@@ -491,7 +492,7 @@ function App() {
             {["Courses", "Teachers", "Resources", "About"].map((item) => (
               <a
                 key={item}
-                href={`#${item.toLowerCase()}`}
+                onClick={() => navigate(`/${item.toLowerCase()}`)}
                 className="text-white hover:text-blue-200 transition-colors font-semibold text-lg"
               >
                 {item}
