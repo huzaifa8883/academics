@@ -489,7 +489,7 @@ function App() {
     
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {["Courses", "Teachers", "Resources", "About"].map((item) => (
+            {["Home","Courses", "Academies", "Resources", "About"].map((item) => (
               <a
                 key={item}
                 onClick={() => navigate(`/${item.toLowerCase()}`)}

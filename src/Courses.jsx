@@ -6,8 +6,10 @@ import { RiSearchLine, RiNotificationLine, RiCloseLine, RiMenuLine, RiChatSmileL
 import { FaUserGraduate, FaChalkboardTeacher, FaChalkboard,FaBookOpen,FaLinkedin,FaTwitter,FaEnvelope ,FaCalendarAlt,FaClock,FaUser } from 'react-icons/fa';
 import { BsLightningCharge, BsStars,BsPeopleFill, BsBookFill, } from "react-icons/bs";
 import { IoSchoolOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
-// Constants
+// Constantimport { useNavigate } from "react-router-dom";
+
 const CURRENT_USER = "huzaifa8883";
 const CURRENT_DATE = "2025-02-03 01:51:27";
 const currentTime = "2025-02-03 03:19:16";
@@ -241,6 +243,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+      const navigate = useNavigate();
+    
   
 
   useEffect(() => {
@@ -250,117 +254,117 @@ const Navbar = () => {
   }, []);
 
   return (
-   <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md shadow-lg" : "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md"}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <div className="flex items-center">
-              <img src="https://reves-wp.b-cdn.net/wp-content/uploads/2022/04/Reves-Logo.svg" alt="Logo" className="h-12" />
-            </div>
-      
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              {["Courses", "Teachers", "Resources", "About"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-white hover:text-blue-200 transition-colors font-semibold text-lg"
-                >
-                  {item}
-                </a>
-              ))}
-      
-              {/* Search Button */}
-              <button
-                onClick={() => setShowSearch(!showSearch)}
-                className="text-white hover:text-blue-200 transition-colors"
-              >
-                <RiSearchLine className="h-6 w-6" />
-              </button>
-      
-              {/* Notification Button */}
-              <div className="relative">
-                <button className="text-white hover:text-blue-200 transition-colors">
-                  <RiNotificationLine className="h-6 w-6" />
-                </button>
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  3
-                </span>
-              </div>
-      
-              {/* Get Started Button */}
-              <button
-                onClick={() => setShowLoginModal(true)}
-                className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
-              >
-                Get Started
-              </button>
-            </div>
-      
-            {/* Mobile Menu Toggle */}
-            <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
-            </button>
-          </div>
-      
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="md:hidden bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md border-t border-blue-700"
-              >
-                <div className="flex flex-col space-y-4 p-4">
-                  {["Courses", "Teachers", "Resources", "About"].map((item) => (
-                    <a
-                      key={item}
-                      href={`#${item.toLowerCase()}`}
-                      className="text-white hover:text-blue-200 font-medium text-lg"
-                    >
-                      {item}
-                    </a>
-                  ))}
-                  <button
-                    onClick={() => setShowLoginModal(true)}
-                    className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
-                  >
-                    Get Started
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      
-        {/* Search Overlay */}
-        <AnimatePresence>
-          {showSearch && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-            >
-              <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
-                <div className="flex items-center">
-                  <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
-                  <input
-                    type="text"
-                    placeholder="Search courses, teachers, or topics..."
-                    className="flex-1 outline-none text-lg"
-                    autoFocus
-                  />
-                  <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
-                    <RiCloseLine className="h-6 w-6" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md shadow-lg" : "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md"}`}>
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div className="flex justify-between items-center h-20">
+           {/* Logo */}
+           <div className="flex items-center">
+             <img src="https://reves-wp.b-cdn.net/wp-content/uploads/2022/04/Reves-Logo.svg" alt="Logo" className="h-12" />
+           </div>
+     
+           {/* Desktop Menu */}
+           <div className="hidden md:flex items-center space-x-8">
+             {["Home","Courses", "Academies", "Resources", "About"].map((item) => (
+               <a
+                 key={item}
+                 onClick={() => navigate(`/${item.toLowerCase()}`)}
+                 className="text-white hover:text-blue-200 transition-colors font-semibold text-lg"
+               >
+                 {item}
+               </a>
+             ))}
+     
+             {/* Search Button */}
+             <button
+               onClick={() => setShowSearch(!showSearch)}
+               className="text-white hover:text-blue-200 transition-colors"
+             >
+               <RiSearchLine className="h-6 w-6" />
+             </button>
+     
+             {/* Notification Button */}
+             <div className="relative">
+               <button className="text-white hover:text-blue-200 transition-colors">
+                 <RiNotificationLine className="h-6 w-6" />
+               </button>
+               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                 3
+               </span>
+             </div>
+     
+             {/* Get Started Button */}
+             <button
+               onClick={() => setShowLoginModal(true)}
+               className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
+             >
+               Get Started
+             </button>
+           </div>
+     
+           {/* Mobile Menu Toggle */}
+           <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+             {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
+           </button>
+         </div>
+     
+         {/* Mobile Menu */}
+         <AnimatePresence>
+           {isMenuOpen && (
+             <motion.div
+               initial={{ opacity: 0, height: 0 }}
+               animate={{ opacity: 1, height: "auto" }}
+               exit={{ opacity: 0, height: 0 }}
+               className="md:hidden bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md border-t border-blue-700"
+             >
+               <div className="flex flex-col space-y-4 p-4">
+                 {["Courses", "Teachers", "Resources", "About"].map((item) => (
+                   <a
+                     key={item}
+                     href={`#${item.toLowerCase()}`}
+                     className="text-white hover:text-blue-200 font-medium text-lg"
+                   >
+                     {item}
+                   </a>
+                 ))}
+                 <button
+                   onClick={() => setShowLoginModal(true)}
+                   className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
+                 >
+                   Get Started
+                 </button>
+               </div>
+             </motion.div>
+           )}
+         </AnimatePresence>
+       </div>
+     
+       {/* Search Overlay */}
+       <AnimatePresence>
+         {showSearch && (
+           <motion.div
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             exit={{ opacity: 0 }}
+             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+           >
+             <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
+               <div className="flex items-center">
+                 <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
+                 <input
+                   type="text"
+                   placeholder="Search courses, teachers, or topics..."
+                   className="flex-1 outline-none text-lg"
+                   autoFocus
+                 />
+                 <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
+                   <RiCloseLine className="h-6 w-6" />
+                 </button>
+               </div>
+             </div>
+           </motion.div>
+         )}
+       </AnimatePresence>
+     </nav>
   );
 };
 

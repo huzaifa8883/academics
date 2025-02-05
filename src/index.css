@@ -4,3 +4,25 @@
 .fonting{
     font-family: 'Poppins', sans-serif;
 }
+
+.swiper {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: auto;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #3b82f6 !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #3b82f6 !important;
+  }
