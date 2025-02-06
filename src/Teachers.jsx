@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { RiSearchLine, RiNotificationLine, RiCloseLine, RiMenuLine, RiChatSmileLine,RiChatQuoteLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 // import Footer from "./Footer"
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -673,7 +673,7 @@ const [isScrolled, setIsScrolled] = useState(false);
           strokeLinejoin="round" 
           strokeWidth="2" 
           d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-        />
+        /> 
       </svg>
       <span>Search</span>
     </div>
@@ -682,6 +682,7 @@ const [isScrolled, setIsScrolled] = useState(false);
     </motion.div>
 
     {/* Teachers Grid */}
+    <Link to="/teacherprofile">
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {featuredTeachers.map((teacher, index) => (
         <motion.div
@@ -785,6 +786,7 @@ const [isScrolled, setIsScrolled] = useState(false);
         </motion.div>
       ))}
     </div>
+    </Link>
   </div>
 </section>
 

@@ -6,6 +6,7 @@ import "./index.css";
 import Teachers from "./Teachers.jsx"
 import App from "./App.jsx";
 import Courses from "./Courses.jsx";
+import TeacherProfile from "./Teacherprofile.jsx";
 // Router banayein
 const router = createBrowserRouter([
     {
@@ -23,7 +24,13 @@ const router = createBrowserRouter([
     {
         path:"/academies",
         element:<Teachers />,
+    },
+    {
+        path:"/teacherprofile",
+        element:<TeacherProfile />,
     }
+
+
 
 ]);
 
