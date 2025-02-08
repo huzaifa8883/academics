@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch, FiBook, FiUser, FiMapPin, FiClock, FiCalendar, FiUserPlus, FiAward, FiPlay, FiTrendingUp, FiGrid,FiUsers,FiBookOpen,FiGlobe,FiFilter,  FiBarChart, FiX, FiRefreshCw,FiDollarSign, FiStar, FiVideo,FiDownload, FiArrowRight ,FiCheck } from "react-icons/fi";
 import { RiSearchLine, RiNotificationLine, RiCloseLine, RiMenuLine, RiChatSmileLine,RiChatQuoteLine } from "react-icons/ri";
@@ -41,15 +41,97 @@ const getLevelColor = (level) => {
       { value: "Advanced", label: "Advanced" },
       { value: "Expert", label: "Expert" }
     ],
-    city: [
+     city : [
       { value: "", label: "All Locations" },
-      { value: "New York", label: "New York" },
-      { value: "London", label: "London" },
-      { value: "Paris", label: "Paris" },
-      { value: "Tokyo", label: "Tokyo" },
-      { value: "Sydney", label: "Sydney" },
-      { value: "Online", label: "Online" }
+     
+      { value: "Online", label: "Online" },
+      { value: "Abbottabad", label: "Abbottabad" },
+      { value: "Adezai", label: "Adezai" },
+      { value: "Ahmadpur East", label: "Ahmadpur East" },
+      { value: "Aijazabad", label: "Aijazabad" },
+      { value: "Akora Khattak", label: "Akora Khattak" },
+      { value: "Alipur", label: "Alipur" },
+      { value: "Arifwala", label: "Arifwala" },
+      { value: "Attock", label: "Attock" },
+      { value: "Bahawalnagar", label: "Bahawalnagar" },
+      { value: "Bahawalpur", label: "Bahawalpur" },
+      { value: "Bannu", label: "Bannu" },
+      { value: "Bhalwal", label: "Bhalwal" },
+      { value: "Bhakkar", label: "Bhakkar" },
+      { value: "Bhimber", label: "Bhimber" },
+      { value: "Buner", label: "Buner" },
+      { value: "Chakdara", label: "Chakdara" },
+      { value: "Chakwal", label: "Chakwal" },
+      { value: "Chiniot", label: "Chiniot" },
+      { value: "Dadu", label: "Dadu" },
+      { value: "Dera Ghazi Khan", label: "Dera Ghazi Khan" },
+      { value: "Dera Ismail Khan", label: "Dera Ismail Khan" },
+      { value: "Dera Murad Jamali", label: "Dera Murad Jamali" },
+      { value: "Faisalabad", label: "Faisalabad" },
+      { value: "Gawadar", label: "Gawadar" },
+      { value: "Gilgit", label: "Gilgit" },
+      { value: "Gujranwala", label: "Gujranwala" },
+      { value: "Gujrat", label: "Gujrat" },
+      { value: "Gujar Khan", label: "Gujar Khan" },
+      { value: "Hala", label: "Hala" },
+      { value: "Hangu", label: "Hangu" },
+      { value: "Haripur", label: "Haripur" },
+      { value: "Hyderabad", label: "Hyderabad" },
+      { value: "Islamabad", label: "Islamabad" },
+      { value: "Jacobabad", label: "Jacobabad" },
+      { value: "Jaffarabad", label: "Jaffarabad" },
+      { value: "Jhang", label: "Jhang" },
+      { value: "Jhelum", label: "Jhelum" },
+      { value: "Karachi", label: "Karachi" },
+      { value: "Karak", label: "Karak" },
+      { value: "Karakoram", label: "Karakoram" },
+      { value: "Khanewal", label: "Khanewal" },
+      { value: "Khanpur", label: "Khanpur" },
+      { value: "Khairpur", label: "Khairpur" },
+      { value: "Khushab", label: "Khushab" },
+      { value: "Kotli", label: "Kotli" },
+      { value: "Lakki Marwat", label: "Lakki Marwat" },
+      { value: "Lahore", label: "Lahore" },
+      { value: "Lasbela", label: "Lasbela" },
+      { value: "Larkana", label: "Larkana" },
+      { value: "Mandi Bahauddin", label: "Mandi Bahauddin" },
+      { value: "Mansehra", label: "Mansehra" },
+      { value: "Mardan", label: "Mardan" },
+      { value: "Malakand", label: "Malakand" },
+      { value: "Multan", label: "Multan" },
+      { value: "Murree", label: "Murree" },
+      { value: "Nawabshah", label: "Nawabshah" },
+      { value: "Narowal", label: "Narowal" },
+      { value: "Nowshera", label: "Nowshera" },
+      { value: "Okara", label: "Okara" },
+      { value: "Panjgur", label: "Panjgur" },
+      { value: "Parachinar", label: "Parachinar" },
+      { value: "Pakpattan", label: "Pakpattan" },
+      { value: "Peshawar", label: "Peshawar" },
+      { value: "Quetta", label: "Quetta" },
+      { value: "Rajanpur", label: "Rajanpur" },
+      { value: "Rawalpindi", label: "Rawalpindi" },
+      { value: "Saddar", label: "Saddar" },
+      { value: "Sahiwal", label: "Sahiwal" },
+      { value: "Sargodha", label: "Sargodha" },
+      { value: "Shikarpur", label: "Shikarpur" },
+      { value: "Sheikhupura", label: "Sheikhupura" },
+      { value: "Skardu", label: "Skardu" },
+      { value: "Sibi", label: "Sibi" },
+      { value: "Sialkot", label: "Sialkot" },
+      { value: "Sukkur", label: "Sukkur" },
+      { value: "Swabi", label: "Swabi" },
+      { value: "Swat", label: "Swat" },
+      { value: "Tando Adam", label: "Tando Adam" },
+      { value: "Tando Allahyar", label: "Tando Allahyar" },
+      { value: "Tank", label: "Tank" },
+      { value: "Turbat", label: "Turbat" },
+      { value: "Umerkot", label: "Umerkot" },
+      { value: "Wazirabad", label: "Wazirabad" },
+      { value: "Zhob", label: "Zhob" },
+      { value: "Ziarat", label: "Ziarat" }
     ],
+    
     ageGroup: [
       { value: "", label: "All Age Groups" },
       { value: "Kids", label: "Kids (7-12)" },
@@ -72,13 +154,14 @@ const getLevelColor = (level) => {
       { value: "$100-$200", label: "$100-$200" },
       { value: "$200+", label: "$200+" }
     ],
-    schedule: [
+     schedule : [
       { value: "", label: "Any Schedule" },
-      { value: "Weekdays", label: "Weekdays" },
-      { value: "Weekends", label: "Weekends" },
-      { value: "Evening", label: "Evening" },
-      { value: "Self-Paced", label: "Self-Paced" }
-    ]
+      { value: "Weekdays", label: "Weekdays (10:00 AM - 12:00 PM)" },
+      { value: "Weekends", label: "Weekends (2:00 PM - 4:00 PM)" },
+      { value: "Evening", label: "Evening (6:00 PM - 8:00 PM)" },
+      { value: "Self-Paced", label: "Self-Paced (Study at Your Own Time)" }
+    ],
+    
   };
 
 // Sample Data
@@ -815,8 +898,15 @@ const resetFilters = () => {
   };
 // Search and Filter Component
 const SearchFilters = ({ filters, setFilters }) => {
-  const [activeCategory, setActiveCategory] = useState(null);
 
+  const [activeCategory, setActiveCategory] = useState(null);
+  const selectRef = useRef(null);
+
+  useEffect(() => {
+    if (activeCategory && selectRef.current) {
+      selectRef.current.focus(); // Automatically opens dropdown
+    }
+  }, [activeCategory]);
 return (
   <motion.div
   initial={{ opacity: 0, y: -20 }}
@@ -960,7 +1050,18 @@ return (
 </motion.div>
 
 )}
-const SelectField = ({ icon: Icon, value, onChange, options }) => (
+const SelectField = ({ icon: Icon, value, onChange, options }) => {
+  const selectRef = useRef(null);
+  const [activeCategory, setActiveCategory] = useState(true);
+
+
+  useEffect(() => {
+    if (activeCategory && selectRef.current) {
+      selectRef.current.focus(); 
+      selectRef.current.size = options.length; // Show all options
+    }
+  }, [activeCategory, options]);
+  return (
   <div className="relative group">
     <div className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full 
       bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-colors duration-300">
@@ -968,11 +1069,14 @@ const SelectField = ({ icon: Icon, value, onChange, options }) => (
     </div>
     <select
       value={value}
+      ref={selectRef}
       onChange={onChange}
       className="w-full pl-16 pr-10 py-4 bg-[#1e1b4b]/50 border-2 border-indigo-500/20 rounded-xl
         focus:bg-[#1e1b4b]/70 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20
         text-gray-200 appearance-none cursor-pointer transition-all duration-300
         hover:border-indigo-500/30 shadow-inner shadow-black/10"
+        onFocus={() => setActiveCategory(true)} // Keep it open
+        onBlur={() => setActiveCategory(false)} // Close on blur
     >
       {options.map(option => (
         <option key={option.value} value={option.value}>
@@ -987,7 +1091,8 @@ const SelectField = ({ icon: Icon, value, onChange, options }) => (
       </svg>
     </div>
   </div>
-)
+)}
+
 const filterCategories = [
   { name: 'All', icon: FiGrid },
   { name: 'Popular', icon: FiTrendingUp },

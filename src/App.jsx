@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import CountUp from "react-countup";
 import "slick-carousel/slick/slick.css";
+import pakistanCities from "./pakistanCities";
 import "slick-carousel/slick/slick-theme.css";
 const categories = [
   { title: "Mathematics", description: "Master numbers and equations.", icon: "🧮" },
@@ -415,6 +416,8 @@ function App() {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedAge, setSelectedAge] = useState("");
   const [showSearch, setShowSearch] = useState(false);
+  const [selectedCity, setSelectedCity] = useState("");
+
   const navigate = useNavigate();
 
   const enhancedSubjects = [
@@ -596,92 +599,105 @@ function App() {
   // Enhanced Hero Section Component
   const EnhancedHeroSection = () => (
     <div className="py-20 relative min-h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('https://www.eui.eu/Content-Types-Assets/Web-Unit/Conferring-ceremony-2023.xa86ef5cb.jpg?crop=1920,1080,0,153')" }}>
-    {/* Gradient Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
+    
+      {/* Content */}
+      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-shadow-lg"
+        >
+          Transform Your Child's Future Through Interactive Learning
+        </motion.h1>
+    
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="text-lg md:text-xl mb-12 leading-relaxed"
+        >
+          Join thousands of students worldwide in live online classes taught by expert instructors
+        </motion.p>
+    
+        {/* Search Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="bg-white bg-opacity-90 rounded-lg p-4 md:p-6 shadow-xl max-w-3xl mx-auto"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <select
+              value={selectedSubject}
+              onChange={(e) => setSelectedSubject(e.target.value)}
+              className="w-full p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
+            >
+              <option value="">Select Subject</option>
+              {enhancedSubjects.map((subject) => (
+                <option key={subject.id} value={subject.id}>
+                  {subject.name}
+                </option>
+              ))}
+            </select>
+    
+            <select
+              value={selectedAge}
+              onChange={(e) => setSelectedAge(e.target.value)}
+              className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
+            >
+              <option value="">Select Age Group</option>
+              <option value="4-6">4-6 years</option>
+              <option value="7-9">7-9 years</option>
+              <option value="10-12">10-12 years</option>
+              <option value="13-15">13-15 years</option>
+              <option value="16+">16+ years</option>
+            </select>
   
-    {/* Content */}
-    <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-shadow-lg"
-      >
-        Transform Your Child's Future Through Interactive Learning
-      </motion.h1>
-  
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className="text-lg md:text-xl mb-12 leading-relaxed"
-      >
-        Join thousands of students worldwide in live online classes taught by expert instructors
-      </motion.p>
-  
-      {/* Search Box */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-        className="bg-white bg-opacity-90 rounded-lg p-4 md:p-6 shadow-xl max-w-3xl mx-auto"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <select
-            value={selectedSubject}
-            onChange={(e) => setSelectedSubject(e.target.value)}
-            className="w-full p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
-          >
-            <option value="">Select Subject</option>
-            {enhancedSubjects.map((subject) => (
-              <option key={subject.id} value={subject.id}>
-                {subject.name}
-              </option>
-            ))}
-          </select>
-  
-          <select
-            value={selectedAge}
-            onChange={(e) => setSelectedAge(e.target.value)}
-            className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
-          >
-            <option value="">Select Age Group</option>
-            <option value="4-6">4-6 years</option>
-            <option value="7-9">7-9 years</option>
-            <option value="10-12">10-12 years</option>
-            <option value="13-15">13-15 years</option>
-            <option value="16+">16+ years</option>
-          </select>
-  
-          <button className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center">
-            <RiSearchLine className="mr-2" />
-            Find Classes
-          </button>
+            <select
+              value={selectedCity}
+              onChange={(e) => setSelectedCity(e.target.value)}
+              className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
+            >
+              <option value="">Select City</option>
+              {pakistanCities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+    
+            <button className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center">
+              <RiSearchLine className="mr-2" />
+              Find Classes
+            </button>
+          </div>
+        </motion.div>
+    
+        {/* Stats */}
+        <div className="mt-16 text-black grid grid-cols-2 md:grid-cols-4 gap-8 px-4">
+          {[
+            { number: 100000, label: "Students" },
+            { number: 5000, label: "Teachers" },
+            { number: 10000, label: "Classes" },
+            { number: 50, label: "Countries" },
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 + index * 0.2, ease: "easeOut" }}
+              className="text-center p-4 rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-all"
+            >
+              <CountUp end={stat.number} duration={2.5} separator="," className="text-3xl font-bold" />
+              <p className="text-md">{stat.label}</p>
+            </motion.div>
+          ))}
         </div>
-      </motion.div>
-  
-      {/* Stats */}
-      <div className="mt-16 text-black grid grid-cols-2 md:grid-cols-4 gap-8 px-4">
-        {[
-          { number: 100000, label: "Students" },
-          { number: 5000, label: "Teachers" },
-          { number: 10000, label: "Classes" },
-          { number: 50, label: "Countries" },
-        ].map((stat, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 + index * 0.2, ease: "easeOut" }}
-            className="text-center p-4 rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-all"
-          >
-            <CountUp end={stat.number} duration={2.5} separator="," className="text-3xl font-bold" />
-            <p className="text-md">{stat.label}</p>
-          </motion.div>
-        ))}
       </div>
     </div>
-  </div>
   );
 
   // Featured Classes Component

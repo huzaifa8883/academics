@@ -7,6 +7,7 @@ import Teachers from "./Teachers.jsx"
 import App from "./App.jsx";
 import Courses from "./Courses.jsx";
 import TeacherProfile from "./Teacherprofile.jsx";
+import ParentResourcesPage from "./Resourses"
 // Router banayein
 const router = createBrowserRouter([
     {
@@ -28,7 +29,12 @@ const router = createBrowserRouter([
     {
         path:"/teacherprofile",
         element:<TeacherProfile />,
+    },
+    {
+        path:"/resources",
+        element:<ParentResourcesPage />,
     }
+
 
 
 

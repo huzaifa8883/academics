@@ -6,6 +6,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { RiSearchLine, RiNotificationLine, RiCloseLine, RiMenuLine, RiChatSmileLine,RiChatQuoteLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import pakistanCities from "./pakistanCities";
 // import Footer from "./Footer"
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -421,9 +422,13 @@ const [isScrolled, setIsScrolled] = useState(false);
                 <div className="bg-white/20 backdrop-blur-lg rounded-xl flex items-center px-4 hover:bg-white/30 transition-all duration-300">
                   <FiMapPin className="text-blue-300" size={20} />
                   <select className="w-full p-3 bg-transparent text-white focus:outline-none appearance-none cursor-pointer">
-                    <option value="" className="text-gray-800">Select Location</option>
-                    <option value="online" className="text-gray-800">Online</option>
-                    <option value="in-person" className="text-gray-800">In-Person</option>
+                  <option value="" className="text-gray-800">Select Location</option>
+  {pakistanCities.map((cityOption) => (
+    <option key={cityOption.value} value={cityOption.value} className="text-black">
+      {cityOption}
+    </option>
+  ))}
+      {/* ))} */}
                   </select>
                 </div>
 
