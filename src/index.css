@@ -329,3 +329,148 @@
     background-size: 200% 200%;
     animation: gradient 8s linear infinite;
   }
+  .swiper {
+    padding: 50px 0;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: auto;
+  }
+  
+  .swiper-slide-active {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+  }
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+  
+  .animate-pulse {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(20px, -20px) scale(1.05);
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+    75% {
+      transform: translate(-20px, -20px) scale(1.05);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 20s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  /* Smooth scrolling for counter animations */
+  html {
+    scroll-behavior: smooth;
+  }
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(20px, -20px) scale(1.05);
+    }
+    50% {
+      transform: translate(-20px, 20px) scale(0.95);
+    }
+    75% {
+      transform: translate(-20px, -20px) scale(1.05);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 20s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .testimonial-swiper {
+    padding: 50px 0;
+  }
+  
+  .testimonial-swiper .swiper-slide {
+    opacity: 0.4;
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-swiper .swiper-slide-active {
+    opacity: 1;
+  }
+  
+  .testimonial-swiper .swiper-pagination-bullet {
+    background: rgba(99, 102, 241, 0.5);
+  }
+  
+  .testimonial-swiper .swiper-pagination-bullet-active {
+    background: #6366f1;
+  }
+  
+  .testimonial-swiper .swiper-button-next,
+  .testimonial-swiper .swiper-button-prev {
+    color: #6366f1;
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-swiper .swiper-button-next:hover,
+  .testimonial-swiper .swiper-button-prev:hover {
+    color: #4f46e5;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+  }
+  
+  .animate-pulse {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.1;
+    }
+  }
+  
+  /* Add to your tailwind.config.js */
+ 
