@@ -100,117 +100,198 @@ const ParentResourcesPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md shadow-lg" : "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md"}`}>
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-20">
-                      {/* Logo */}
-                      <div className="flex items-center">
-                        <img src="https://reves-wp.b-cdn.net/wp-content/uploads/2022/04/Reves-Logo.svg" alt="Logo" className="h-12" />
-                      </div>
-                
-                      {/* Desktop Menu */}
-                      <div className="hidden md:flex items-center space-x-8">
-                        {["Home","Courses", "Academies", "Resources", "About"].map((item) => (
-                          <a
-                            key={item}
-                            onClick={() => navigate(`/${item.toLowerCase()}`)}
-                            className="text-white hover:text-blue-200 transition-colors font-semibold text-lg"
-                          >
-                            {item}
-                          </a>
-                        ))}
-                
-                        {/* Search Button */}
-                        <button
-                          onClick={() => setShowSearch(!showSearch)}
-                          className="text-white hover:text-blue-200 transition-colors"
-                        >
-                          <RiSearchLine className="h-6 w-6" />
-                        </button>
-                
-                        {/* Notification Button */}
-                        <div className="relative">
-                          <button className="text-white hover:text-blue-200 transition-colors">
-                            <RiNotificationLine className="h-6 w-6" />
-                          </button>
-                          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                            3
-                          </span>
-                        </div>
-                
-                        {/* Get Started Button */}
-                        <button
-                          onClick={() => setShowLoginModal(true)}
-                          className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
-                        >
-                          Get Started
-                        </button>
-                      </div>
-                
-                      {/* Mobile Menu Toggle */}
-                      <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
-                      </button>
-                    </div>
-                
-                    {/* Mobile Menu */}
-                    <AnimatePresence>
-                      {isMenuOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="md:hidden bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md border-t border-blue-700"
-                        >
-                          <div className="flex flex-col space-y-4 p-4">
-                            {["Courses", "Teachers", "Resources", "About"].map((item) => (
-                              <a
-                                key={item}
-                                href={`#${item.toLowerCase()}`}
-                                className="text-white hover:text-blue-200 font-medium text-lg"
-                              >
-                                {item}
-                              </a>
-                            ))}
-                            <button
-                              onClick={() => setShowLoginModal(true)}
-                              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
-                            >
-                              Get Started
-                            </button>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? "bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md shadow-lg" 
+          : "bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md"
+      }`}>
+        {/* Rest of your navbar code remains the same, just updating the color-related classes */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <div className="flex items-center">
+        <div className="relative group">
+          <div className="flex items-center space-x-3">
+            {/* Main Logo Container */}
+            <div className="relative group cursor-pointer">
+              {/* Background glow effect */}
+              <div className="absolute inset-[-4px] bg-gradient-to-r from-rose-600/50 via-orange-500/50 to-amber-500/50 rounded-xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+              
+              <div className="relative">
+                {/* Main logo shape - Made wider than height */}
+                <div className="relative w-16 h-12 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 rounded-xl transform transition-all duration-500 group-hover:scale-105 shadow-lg group-hover:shadow-orange-500/50">
+                  {/* Animated gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-xl animate-shine"></div>
+                  
+                  {/* Glass effect */}
+                  <div className="absolute inset-[1px] bg-gradient-to-br from-white/20 to-transparent rounded-xl backdrop-blur-sm">
+                    {/* Diagonal lines pattern */}
+                    <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_2px,white_2px,white_3px)]"></div>
                   </div>
-                
-                  {/* Search Overlay */}
-                  <AnimatePresence>
-                    {showSearch && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-                      >
-                        <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
-                          <div className="flex items-center">
-                            <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
-                            <input
-                              type="text"
-                              placeholder="Search courses, teachers, or topics..."
-                              className="flex-1 outline-none text-lg"
-                              autoFocus
-                            />
-                            <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
-                              <RiCloseLine className="h-6 w-6" />
-                            </button>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </nav>
+                  
+                  {/* Center content with 3D effect */}
+                  <div className="absolute inset-0 flex items-center justify-center transform transition-transform duration-500">
+                    <span className="relative text-white text-2xl font-bold font-sans tracking-wider group-hover:scale-110">
+                      {/* Text shadow for 3D effect */}
+                      <span className="absolute -top-[1px] -left-[1px] text-orange-200/50">A</span>
+                      <span className="relative">A</span>
+                      <span className="absolute -bottom-[1px] -right-[1px] text-rose-700/50">A</span>
+                    </span>
+                  </div>
+      
+                  {/* Animated border with gradient */}
+                  <div className="absolute inset-0 rounded-xl border border-white/20 overflow-hidden">
+                    <div className="absolute inset-0 animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100">
+                      <div className="w-full h-full rounded-xl border border-transparent border-t-white/40"></div>
+                    </div>
+                  </div>
+                </div>
+      
+                {/* Enhanced particles */}
+                <div className="absolute -top-1 -right-1 w-3 h-3">
+                  <div className="absolute inset-0 bg-amber-400 rounded-full animate-ping opacity-75"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-amber-400 rounded-full animate-pulse"></div>
+                </div>
+                <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5">
+                  <div className="absolute inset-0 bg-rose-400 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 bg-orange-400 rounded-full animate-ping opacity-75 delay-300"></div>
+                </div>
+      
+                {/* Sparkle effects */}
+                <div className="absolute -top-2 left-1/2 w-1 h-1 bg-white rounded-full animate-twinkle"></div>
+                <div className="absolute top-1/2 -right-2 w-1 h-1 bg-white rounded-full animate-twinkle delay-150"></div>
+              </div>
+            </div>
+      
+            {/* Text container with enhanced styling */}
+            <div className="relative">
+              <h1 className="text-3xl font-bold mb-0">
+                <span className="relative inline-block">
+                  {/* Main text with vibrant gradient */}
+                  <span className="bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 bg-clip-text text-transparent font-sans">
+                    Azad
+                  </span>
+                  {/* Enhanced glow effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 blur-md opacity-50 bg-clip-text text-transparent animate-pulse">
+                    Azad
+                  </span>
+                  {/* Animated underline with gradient */}
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 group-hover:w-full transition-all duration-700"></span>
+                </span>
+              </h1>
+              <p className="text-sm font-medium tracking-wide">
+                <span className="bg-gradient-to-r from-rose-200 via-orange-200 to-amber-200 bg-clip-text text-transparent">
+                  Education
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+            {/* Desktop Menu - Updated hover colors */}
+            <div className="hidden md:flex items-center space-x-8">
+              {["Home", "Courses", "Academies", "Resources", "About"].map((item) => (
+                <a
+                  key={item}
+                  onClick={() => navigate(`/${item.toLowerCase()}`)}
+                  className="text-white hover:text-emerald-200 transition-colors font-semibold text-lg"
+                >
+                  {item}
+                </a>
+              ))}
+      
+              {/* Search Button */}
+              <button
+                onClick={() => setShowSearch(!showSearch)}
+                className="text-white hover:text-emerald-200 transition-colors"
+              >
+                <RiSearchLine className="h-6 w-6" />
+              </button>
+      
+              {/* Notification Button */}
+              <div className="relative">
+                <button className="text-white hover:text-emerald-200 transition-colors">
+                  <RiNotificationLine className="h-6 w-6" />
+                </button>
+                <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+                  3
+                </span>
+              </div>
+      
+              {/* Get Started Button - Updated gradient */}
+              <button
+                onClick={() => setShowLoginModal(true)}
+                className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full hover:from-emerald-600 hover:to-blue-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
+              >
+                Get Started
+              </button>
+            </div>
+      
+            {/* Mobile Menu Toggle */}
+            <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
+            </button>
+          </div>
+      
+          {/* Mobile Menu - Updated gradient */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md border-t border-emerald-500"
+              >
+                <div className="flex flex-col space-y-4 p-4">
+                  {["Courses", "Teachers", "Resources", "About"].map((item) => (
+                    <a
+                      key={item}
+                      href={`#${item.toLowerCase()}`}
+                      className="text-white hover:text-emerald-200 font-medium text-lg"
+                    >
+                      {item}
+                    </a>
+                  ))}
+                  <button
+                    onClick={() => setShowLoginModal(true)}
+                    className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
+                  >
+                    Get Started
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      
+        {/* Search Overlay - No color changes needed */}
+        <AnimatePresence>
+          {showSearch && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+            >
+              <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
+                <div className="flex items-center">
+                  <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
+                  <input
+                    type="text"
+                    placeholder="Search courses, teachers, or topics..."
+                    className="flex-1 outline-none text-lg"
+                    autoFocus
+                  />
+                  <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
+                    <RiCloseLine className="h-6 w-6" />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
       {/* Hero Section - Enhanced with 3D elements and particles */}
       <div className="relative h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 overflow-hidden">
         {/* Animated background particles */}

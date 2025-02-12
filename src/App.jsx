@@ -407,6 +407,14 @@ const FeaturedCourseCard = ({ course }) => (
   </motion.button>
 </motion.div>
 );
+const provincesWithCities = {
+  Punjab: ["Lahore", "Rawalpindi", "Faisalabad", "Multan", "Sialkot"],
+  Sindh: ["Karachi", "Hyderabad", "Sukkur", "Larkana", "Nawabshah"],
+  KPK: ["Peshawar", "Abbottabad", "Mardan", "Swat", "Kohat"],
+  Balochistan: ["Quetta", "Gwadar", "Turbat", "Khuzdar", "Zhob"],
+  GilgitBaltistan: ["Gilgit", "Skardu", "Hunza", "Diamer", "Ghanche"],
+  Islamabad: ["Islamabad"]
+};
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -417,9 +425,19 @@ function App() {
   const [selectedAge, setSelectedAge] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [selectedCity, setSelectedCity] = useState("");
-
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [showCities, setShowCities] = useState(false);
   const navigate = useNavigate();
-
+  const handleProvinceChange = (e) => {
+    const province = e.target.value;
+    if (province && provincesWithCities[province]) {
+      setSelectedProvince(province);
+      setShowCities(true); // Show cities only if valid province
+    } else {
+      setShowCities(false);
+    }
+    setSelectedCity("");
+  };
   const enhancedSubjects = [
     {
       id: 1,
@@ -482,117 +500,198 @@ function App() {
     }, []);
 
     return (
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md shadow-lg" : "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md"}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img src="https://reves-wp.b-cdn.net/wp-content/uploads/2022/04/Reves-Logo.svg" alt="Logo" className="h-12" />
-          </div>
-    
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {["Home","Courses", "Academies", "Resources", "About"].map((item) => (
-              <a
-                key={item}
-                onClick={() => navigate(`/${item.toLowerCase()}`)}
-                className="text-white hover:text-blue-200 transition-colors font-semibold text-lg"
-              >
-                {item}
-              </a>
-            ))}
-    
-            {/* Search Button */}
-            <button
-              onClick={() => setShowSearch(!showSearch)}
-              className="text-white hover:text-blue-200 transition-colors"
-            >
-              <RiSearchLine className="h-6 w-6" />
-            </button>
-    
-            {/* Notification Button */}
-            <div className="relative">
-              <button className="text-white hover:text-blue-200 transition-colors">
-                <RiNotificationLine className="h-6 w-6" />
-              </button>
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                3
-              </span>
-            </div>
-    
-            {/* Get Started Button */}
-            <button
-              onClick={() => setShowLoginModal(true)}
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
-            >
-              Get Started
-            </button>
-          </div>
-    
-          {/* Mobile Menu Toggle */}
-          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
-          </button>
-        </div>
-    
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md border-t border-blue-700"
-            >
-              <div className="flex flex-col space-y-4 p-4">
-                {["Courses", "Teachers", "Resources", "About"].map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-white hover:text-blue-200 font-medium text-lg"
-                  >
-                    {item}
-                  </a>
-                ))}
-                <button
-                  onClick={() => setShowLoginModal(true)}
-                  className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
-                >
-                  Get Started
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    
-      {/* Search Overlay */}
-      <AnimatePresence>
-        {showSearch && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-          >
-            <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
-              <div className="flex items-center">
-                <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
-                <input
-                  type="text"
-                  placeholder="Search courses, teachers, or topics..."
-                  className="flex-1 outline-none text-lg"
-                  autoFocus
-                />
-                <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
-                  <RiCloseLine className="h-6 w-6" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+     <nav className={`fixed w-full z-50 transition-all duration-300 ${
+     isScrolled 
+       ? "bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md shadow-lg" 
+       : "bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md"
+   }`}>
+     {/* Rest of your navbar code remains the same, just updating the color-related classes */}
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       <div className="flex justify-between items-center h-20">
+         {/* Logo */}
+         <div className="flex items-center">
+     <div className="relative group">
+       <div className="flex items-center space-x-3">
+         {/* Main Logo Container */}
+         <div className="relative group cursor-pointer">
+           {/* Background glow effect */}
+           <div className="absolute inset-[-4px] bg-gradient-to-r from-rose-600/50 via-orange-500/50 to-amber-500/50 rounded-xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+           
+           <div className="relative">
+             {/* Main logo shape - Made wider than height */}
+             <div className="relative w-16 h-12 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 rounded-xl transform transition-all duration-500 group-hover:scale-105 shadow-lg group-hover:shadow-orange-500/50">
+               {/* Animated gradient overlay */}
+               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-xl animate-shine"></div>
+               
+               {/* Glass effect */}
+               <div className="absolute inset-[1px] bg-gradient-to-br from-white/20 to-transparent rounded-xl backdrop-blur-sm">
+                 {/* Diagonal lines pattern */}
+                 <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_2px,white_2px,white_3px)]"></div>
+               </div>
+               
+               {/* Center content with 3D effect */}
+               <div className="absolute inset-0 flex items-center justify-center transform transition-transform duration-500">
+                 <span className="relative text-white text-2xl font-bold font-sans tracking-wider group-hover:scale-110">
+                   {/* Text shadow for 3D effect */}
+                   <span className="absolute -top-[1px] -left-[1px] text-orange-200/50">A</span>
+                   <span className="relative">A</span>
+                   <span className="absolute -bottom-[1px] -right-[1px] text-rose-700/50">A</span>
+                 </span>
+               </div>
+   
+               {/* Animated border with gradient */}
+               <div className="absolute inset-0 rounded-xl border border-white/20 overflow-hidden">
+                 <div className="absolute inset-0 animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100">
+                   <div className="w-full h-full rounded-xl border border-transparent border-t-white/40"></div>
+                 </div>
+               </div>
+             </div>
+   
+             {/* Enhanced particles */}
+             <div className="absolute -top-1 -right-1 w-3 h-3">
+               <div className="absolute inset-0 bg-amber-400 rounded-full animate-ping opacity-75"></div>
+               <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-amber-400 rounded-full animate-pulse"></div>
+             </div>
+             <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5">
+               <div className="absolute inset-0 bg-rose-400 rounded-full animate-pulse"></div>
+               <div className="absolute inset-0 bg-orange-400 rounded-full animate-ping opacity-75 delay-300"></div>
+             </div>
+   
+             {/* Sparkle effects */}
+             <div className="absolute -top-2 left-1/2 w-1 h-1 bg-white rounded-full animate-twinkle"></div>
+             <div className="absolute top-1/2 -right-2 w-1 h-1 bg-white rounded-full animate-twinkle delay-150"></div>
+           </div>
+         </div>
+   
+         {/* Text container with enhanced styling */}
+         <div className="relative">
+           <h1 className="text-3xl font-bold mb-0">
+             <span className="relative inline-block">
+               {/* Main text with vibrant gradient */}
+               <span className="bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 bg-clip-text text-transparent font-sans">
+                 Azad
+               </span>
+               {/* Enhanced glow effect */}
+               <span className="absolute inset-0 bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 blur-md opacity-50 bg-clip-text text-transparent animate-pulse">
+                 Azad
+               </span>
+               {/* Animated underline with gradient */}
+               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 group-hover:w-full transition-all duration-700"></span>
+             </span>
+           </h1>
+           <p className="text-sm font-medium tracking-wide">
+             <span className="bg-gradient-to-r from-rose-200 via-orange-200 to-amber-200 bg-clip-text text-transparent">
+               Education
+             </span>
+           </p>
+         </div>
+       </div>
+     </div>
+   </div>
+   
+         {/* Desktop Menu - Updated hover colors */}
+         <div className="hidden md:flex items-center space-x-8">
+           {["Home", "Courses", "Academies", "Resources", "About"].map((item) => (
+             <a
+               key={item}
+               onClick={() => navigate(`/${item.toLowerCase()}`)}
+               className="text-white hover:text-emerald-200 transition-colors font-semibold text-lg"
+             >
+               {item}
+             </a>
+           ))}
+   
+           {/* Search Button */}
+           <button
+             onClick={() => setShowSearch(!showSearch)}
+             className="text-white hover:text-emerald-200 transition-colors"
+           >
+             <RiSearchLine className="h-6 w-6" />
+           </button>
+   
+           {/* Notification Button */}
+           <div className="relative">
+             <button className="text-white hover:text-emerald-200 transition-colors">
+               <RiNotificationLine className="h-6 w-6" />
+             </button>
+             <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+               3
+             </span>
+           </div>
+   
+           {/* Get Started Button - Updated gradient */}
+           <button
+             onClick={() => setShowLoginModal(true)}
+             className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full hover:from-emerald-600 hover:to-blue-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
+           >
+             Get Started
+           </button>
+         </div>
+   
+         {/* Mobile Menu Toggle */}
+         <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+           {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
+         </button>
+       </div>
+   
+       {/* Mobile Menu - Updated gradient */}
+       <AnimatePresence>
+         {isMenuOpen && (
+           <motion.div
+             initial={{ opacity: 0, height: 0 }}
+             animate={{ opacity: 1, height: "auto" }}
+             exit={{ opacity: 0, height: 0 }}
+             className="md:hidden bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md border-t border-emerald-500"
+           >
+             <div className="flex flex-col space-y-4 p-4">
+               {["Courses", "Teachers", "Resources", "About"].map((item) => (
+                 <a
+                   key={item}
+                   href={`#${item.toLowerCase()}`}
+                   className="text-white hover:text-emerald-200 font-medium text-lg"
+                 >
+                   {item}
+                 </a>
+               ))}
+               <button
+                 onClick={() => setShowLoginModal(true)}
+                 className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
+               >
+                 Get Started
+               </button>
+             </div>
+           </motion.div>
+         )}
+       </AnimatePresence>
+     </div>
+   
+     {/* Search Overlay - No color changes needed */}
+     <AnimatePresence>
+       {showSearch && (
+         <motion.div
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           exit={{ opacity: 0 }}
+           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+         >
+           <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
+             <div className="flex items-center">
+               <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
+               <input
+                 type="text"
+                 placeholder="Search courses, teachers, or topics..."
+                 className="flex-1 outline-none text-lg"
+                 autoFocus
+               />
+               <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
+                 <RiCloseLine className="h-6 w-6" />
+               </button>
+             </div>
+           </div>
+         </motion.div>
+       )}
+     </AnimatePresence>
+   </nav>
     );
   };
 
@@ -603,100 +702,232 @@ function App() {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80"></div>
     
       {/* Content */}
-      <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-shadow-lg"
+      <div className="relative z-10 text-center text-white max-w-5xl mx-auto px-4 py-8">
+  {/* Main Heading with enhanced styling */}
+  <motion.h1
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8 bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent drop-shadow-2xl"
+  >
+    Transform Your Child's Future Through{" "}
+    <span className="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+      Interactive Learning
+    </span>
+  </motion.h1>
+
+  {/* Subheading with improved visibility */}
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+    className="text-xl md:text-2xl mb-12 leading-relaxed font-medium text-blue-100 max-w-3xl mx-auto"
+  >
+    Join thousands of students worldwide in live online classes taught by expert instructors
+  </motion.p>
+
+  {/* Search Box with enhanced design */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+    className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl max-w-4xl mx-auto border border-white/20"
+  >
+<div className="p-6 bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-white/20">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {/* Subject Select */}
+    <div className="relative group">
+      <label className="flex items-center text-sm font-medium text-gray-700 mb-2 ml-1">
+        <svg className="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        Subject
+      </label>
+      <div className="relative">
+        <select
+          value={selectedSubject}
+          onChange={(e) => setSelectedSubject(e.target.value)}
+          className="w-full p-4 rounded-xl text-gray-700 border-2 border-gray-200 bg-white/95
+                   focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                   hover:border-blue-400 transition-all appearance-none shadow-sm
+                   group-hover:shadow-lg group-hover:bg-blue-50/50"
         >
-          Transform Your Child's Future Through Interactive Learning
-        </motion.h1>
-    
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-lg md:text-xl mb-12 leading-relaxed"
+          <option value="" className="text-gray-500">Choose a subject</option>
+          {enhancedSubjects.map((subject) => (
+            <option key={subject.id} value={subject.id} className="text-gray-700">
+              {subject.name}
+            </option>
+          ))}
+        </select>
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+          <div className="bg-blue-500/10 rounded-full p-1 transition-all duration-200 group-hover:bg-blue-500/20">
+            <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Age Group Select */}
+    <div className="relative group">
+      <label className="flex items-center text-sm font-medium text-gray-700 mb-2 ml-1">
+        <svg className="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        Age Group
+      </label>
+      <div className="relative">
+        <select
+          value={selectedAge}
+          onChange={(e) => setSelectedAge(e.target.value)}
+          className="w-full p-4 rounded-xl text-gray-700 border-2 border-gray-200 bg-white/95
+                   focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                   hover:border-blue-400 transition-all appearance-none shadow-sm
+                   group-hover:shadow-lg group-hover:bg-blue-50/50"
         >
-          Join thousands of students worldwide in live online classes taught by expert instructors
-        </motion.p>
-    
-        {/* Search Box */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="bg-white bg-opacity-90 rounded-lg p-4 md:p-6 shadow-xl max-w-3xl mx-auto"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <select
-              value={selectedSubject}
-              onChange={(e) => setSelectedSubject(e.target.value)}
-              className="w-full p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
-            >
-              <option value="">Select Subject</option>
-              {enhancedSubjects.map((subject) => (
-                <option key={subject.id} value={subject.id}>
-                  {subject.name}
-                </option>
-              ))}
-            </select>
-    
-            <select
-              value={selectedAge}
-              onChange={(e) => setSelectedAge(e.target.value)}
-              className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
-            >
-              <option value="">Select Age Group</option>
-              <option value="4-6">4-6 years</option>
-              <option value="7-9">7-9 years</option>
-              <option value="10-12">10-12 years</option>
-              <option value="13-15">13-15 years</option>
-              <option value="16+">16+ years</option>
-            </select>
-  
+          <option value="" className="text-gray-500">Select age range</option>
+          {[
+            { value: "4-6", label: "4-6 years (Primary)" },
+            { value: "7-9", label: "7-9 years (Elementary)" },
+            { value: "10-12", label: "10-12 years (Middle)" },
+            { value: "13-15", label: "13-15 years (High School)" },
+            { value: "16+", label: "16+ years (Advanced)" }
+          ].map((age) => (
+            <option key={age.value} value={age.value}>{age.label}</option>
+          ))}
+        </select>
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+          <div className="bg-blue-500/10 rounded-full p-1 transition-all duration-200 group-hover:bg-blue-500/20">
+            <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Location Selection */}
+    <div className="relative group">
+      <label className="flex items-center text-sm font-medium text-gray-700 mb-2 ml-1">
+        <svg className="w-4 h-4 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        Location
+      </label>
+      <div className="space-y-3">
+        <div className="relative">
+          <select
+            value={selectedProvince}
+            onChange={(e) => {
+              setSelectedProvince(e.target.value);
+              setSelectedCity("");
+            }}
+            className="w-full p-4 rounded-xl text-gray-700 border-2 border-gray-200 bg-white/95
+                     focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                     hover:border-blue-400 transition-all appearance-none shadow-sm
+                     group-hover:shadow-lg group-hover:bg-blue-50/50"
+          >
+            <option value="">Select province</option>
+            {Object.keys(provincesWithCities).map((province) => (
+              <option key={province} value={province}>{province}</option>
+            ))}
+          </select>
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+            <div className="bg-blue-500/10 rounded-full p-1 transition-all duration-200 group-hover:bg-blue-500/20">
+              <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {selectedProvince && (
+          <div className="relative animate-fadeIn">
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className="w-full p-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 hover:border-blue-400 transition-all"
+              className="w-full p-4 rounded-xl text-gray-700 border-2 border-gray-200 bg-white/95
+                       focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500
+                       hover:border-blue-400 transition-all appearance-none shadow-sm
+                       group-hover:shadow-lg group-hover:bg-blue-50/50"
             >
-              <option value="">Select City</option>
-              {pakistanCities.map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
+              <option value="">Select city</option>
+              {provincesWithCities[selectedProvince]?.map((city) => (
+                <option key={city} value={city}>{city}</option>
               ))}
             </select>
-    
-            <button className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center">
-              <RiSearchLine className="mr-2" />
-              Find Classes
-            </button>
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+              <div className="bg-blue-500/10 rounded-full p-1 transition-all duration-200 group-hover:bg-blue-500/20">
+                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
           </div>
-        </motion.div>
-    
-        {/* Stats */}
-        <div className="mt-16 text-black grid grid-cols-2 md:grid-cols-4 gap-8 px-4">
-          {[
-            { number: 100000, label: "Students" },
-            { number: 5000, label: "Teachers" },
-            { number: 10000, label: "Classes" },
-            { number: 50, label: "Countries" },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 + index * 0.2, ease: "easeOut" }}
-              className="text-center p-4 rounded-lg bg-white bg-opacity-10 hover:bg-opacity-20 transition-all"
-            >
-              <CountUp end={stat.number} duration={2.5} separator="," className="text-3xl font-bold" />
-              <p className="text-md">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
+        )}
       </div>
+    </div>
+
+    {/* Search Button */}
+    <div className="relative group flex items-end">
+      <button 
+        className="w-full p-4 rounded-xl text-white font-medium
+                   bg-gradient-to-r from-blue-500 to-indigo-600
+                   hover:from-blue-600 hover:to-indigo-700
+                   focus:outline-none focus:ring-2 focus:ring-blue-500/50
+                   transition-all duration-300 transform hover:scale-[1.02]
+                   shadow-lg hover:shadow-xl active:scale-[0.98]
+                   flex items-center justify-center space-x-2"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <span>Search Classes</span>
+        
+        {/* Animated particles on hover */}
+        <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-400 rounded-full animate-ping"></div>
+          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-indigo-400 rounded-full animate-pulse"></div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+
+  </motion.div>
+
+  {/* Stats with enhanced design */}
+  <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
+    {[
+      { number: 100000, label: "Students", icon: "👨‍🎓" },
+      { number: 5000, label: "Teachers", icon: "👩‍🏫" },
+      { number: 10000, label: "Classes", icon: "📚" },
+      { number: 50, label: "Countries", icon: "🌍" },
+    ].map((stat, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 + index * 0.2, ease: "easeOut" }}
+        className="relative group"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+        <div className="relative p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all">
+          <div className="text-4xl mb-2">{stat.icon}</div>
+          <CountUp
+            end={stat.number}
+            duration={2.5}
+            separator=","
+            className="text-3xl font-bold bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent"
+          />
+          <p className="text-lg font-medium text-blue-100">{stat.label}</p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
     </div>
   );
 

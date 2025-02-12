@@ -41,97 +41,72 @@ const getLevelColor = (level) => {
       { value: "Advanced", label: "Advanced" },
       { value: "Expert", label: "Expert" }
     ],
-     city : [
-      { value: "", label: "All Locations" },
-     
-      { value: "Online", label: "Online" },
-      { value: "Abbottabad", label: "Abbottabad" },
-      { value: "Adezai", label: "Adezai" },
-      { value: "Ahmadpur East", label: "Ahmadpur East" },
-      { value: "Aijazabad", label: "Aijazabad" },
-      { value: "Akora Khattak", label: "Akora Khattak" },
-      { value: "Alipur", label: "Alipur" },
-      { value: "Arifwala", label: "Arifwala" },
-      { value: "Attock", label: "Attock" },
-      { value: "Bahawalnagar", label: "Bahawalnagar" },
-      { value: "Bahawalpur", label: "Bahawalpur" },
-      { value: "Bannu", label: "Bannu" },
-      { value: "Bhalwal", label: "Bhalwal" },
-      { value: "Bhakkar", label: "Bhakkar" },
-      { value: "Bhimber", label: "Bhimber" },
-      { value: "Buner", label: "Buner" },
-      { value: "Chakdara", label: "Chakdara" },
-      { value: "Chakwal", label: "Chakwal" },
-      { value: "Chiniot", label: "Chiniot" },
-      { value: "Dadu", label: "Dadu" },
-      { value: "Dera Ghazi Khan", label: "Dera Ghazi Khan" },
-      { value: "Dera Ismail Khan", label: "Dera Ismail Khan" },
-      { value: "Dera Murad Jamali", label: "Dera Murad Jamali" },
-      { value: "Faisalabad", label: "Faisalabad" },
-      { value: "Gawadar", label: "Gawadar" },
-      { value: "Gilgit", label: "Gilgit" },
-      { value: "Gujranwala", label: "Gujranwala" },
-      { value: "Gujrat", label: "Gujrat" },
-      { value: "Gujar Khan", label: "Gujar Khan" },
-      { value: "Hala", label: "Hala" },
-      { value: "Hangu", label: "Hangu" },
-      { value: "Haripur", label: "Haripur" },
-      { value: "Hyderabad", label: "Hyderabad" },
-      { value: "Islamabad", label: "Islamabad" },
-      { value: "Jacobabad", label: "Jacobabad" },
-      { value: "Jaffarabad", label: "Jaffarabad" },
-      { value: "Jhang", label: "Jhang" },
-      { value: "Jhelum", label: "Jhelum" },
-      { value: "Karachi", label: "Karachi" },
-      { value: "Karak", label: "Karak" },
-      { value: "Karakoram", label: "Karakoram" },
-      { value: "Khanewal", label: "Khanewal" },
-      { value: "Khanpur", label: "Khanpur" },
-      { value: "Khairpur", label: "Khairpur" },
-      { value: "Khushab", label: "Khushab" },
-      { value: "Kotli", label: "Kotli" },
-      { value: "Lakki Marwat", label: "Lakki Marwat" },
-      { value: "Lahore", label: "Lahore" },
-      { value: "Lasbela", label: "Lasbela" },
-      { value: "Larkana", label: "Larkana" },
-      { value: "Mandi Bahauddin", label: "Mandi Bahauddin" },
-      { value: "Mansehra", label: "Mansehra" },
-      { value: "Mardan", label: "Mardan" },
-      { value: "Malakand", label: "Malakand" },
-      { value: "Multan", label: "Multan" },
-      { value: "Murree", label: "Murree" },
-      { value: "Nawabshah", label: "Nawabshah" },
-      { value: "Narowal", label: "Narowal" },
-      { value: "Nowshera", label: "Nowshera" },
-      { value: "Okara", label: "Okara" },
-      { value: "Panjgur", label: "Panjgur" },
-      { value: "Parachinar", label: "Parachinar" },
-      { value: "Pakpattan", label: "Pakpattan" },
-      { value: "Peshawar", label: "Peshawar" },
-      { value: "Quetta", label: "Quetta" },
-      { value: "Rajanpur", label: "Rajanpur" },
-      { value: "Rawalpindi", label: "Rawalpindi" },
-      { value: "Saddar", label: "Saddar" },
-      { value: "Sahiwal", label: "Sahiwal" },
-      { value: "Sargodha", label: "Sargodha" },
-      { value: "Shikarpur", label: "Shikarpur" },
-      { value: "Sheikhupura", label: "Sheikhupura" },
-      { value: "Skardu", label: "Skardu" },
-      { value: "Sibi", label: "Sibi" },
-      { value: "Sialkot", label: "Sialkot" },
-      { value: "Sukkur", label: "Sukkur" },
-      { value: "Swabi", label: "Swabi" },
-      { value: "Swat", label: "Swat" },
-      { value: "Tando Adam", label: "Tando Adam" },
-      { value: "Tando Allahyar", label: "Tando Allahyar" },
-      { value: "Tank", label: "Tank" },
-      { value: "Turbat", label: "Turbat" },
-      { value: "Umerkot", label: "Umerkot" },
-      { value: "Wazirabad", label: "Wazirabad" },
-      { value: "Zhob", label: "Zhob" },
-      { value: "Ziarat", label: "Ziarat" }
+    province: [
+      { value: "", label: "Select Province" },
+      { value: "Punjab", label: "Punjab" },
+      { value: "Sindh", label: "Sindh" },
+      { value: "KPK", label: "Khyber Pakhtunkhwa" },
+      { value: "Balochistan", label: "Balochistan" },
+      { value: "GB", label: "Gilgit Baltistan" },
+      { value: "AJK", label: "Azad Kashmir" },
+      { value: "ICT", label: "Islamabad Capital Territory" }
     ],
-    
+    // Cities will be dynamically populated based on selected province
+    cityByProvince: {
+      Punjab: [
+        { value: "", label: "Select City" },
+        { value: "Lahore", label: "Lahore" },
+        { value: "Faisalabad", label: "Faisalabad" },
+        { value: "Rawalpindi", label: "Rawalpindi" },
+        { value: "Multan", label: "Multan" },
+        { value: "Gujranwala", label: "Gujranwala" },
+        { value: "Sialkot", label: "Sialkot" },
+        { value: "Bahawalpur", label: "Bahawalpur" },
+        // Add other Punjab cities...
+      ],
+      Sindh: [
+        { value: "", label: "Select City" },
+        { value: "Karachi", label: "Karachi" },
+        { value: "Hyderabad", label: "Hyderabad" },
+        { value: "Sukkur", label: "Sukkur" },
+        { value: "Larkana", label: "Larkana" },
+        // Add other Sindh cities...
+      ],
+      KPK: [
+        { value: "", label: "Select City" },
+        { value: "Peshawar", label: "Peshawar" },
+        { value: "Mardan", label: "Mardan" },
+        { value: "Swat", label: "Swat" },
+        { value: "Abbottabad", label: "Abbottabad" },
+        // Add other KPK cities...
+      ],
+      Balochistan: [
+        { value: "", label: "Select City" },
+        { value: "Quetta", label: "Quetta" },
+        { value: "Gawadar", label: "Gawadar" },
+        { value: "Turbat", label: "Turbat" },
+        { value: "Khuzdar", label: "Khuzdar" },
+        // Add other Balochistan cities...
+      ],
+      GB: [
+        { value: "", label: "Select City" },
+        { value: "Gilgit", label: "Gilgit" },
+        { value: "Skardu", label: "Skardu" },
+        { value: "Hunza", label: "Hunza" },
+        // Add other GB cities...
+      ],
+      AJK: [
+        { value: "", label: "Select City" },
+        { value: "Muzaffarabad", label: "Muzaffarabad" },
+        { value: "Mirpur", label: "Mirpur" },
+        { value: "Kotli", label: "Kotli" },
+        // Add other AJK cities...
+      ],
+      ICT: [
+        { value: "", label: "Select City" },
+        { value: "Islamabad", label: "Islamabad" },
+      ]
+    },
     ageGroup: [
       { value: "", label: "All Age Groups" },
       { value: "Kids", label: "Kids (7-12)" },
@@ -337,117 +312,198 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md shadow-lg" : "bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md"}`}>
-       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="flex justify-between items-center h-20">
-           {/* Logo */}
-           <div className="flex items-center">
-             <img src="https://reves-wp.b-cdn.net/wp-content/uploads/2022/04/Reves-Logo.svg" alt="Logo" className="h-12" />
-           </div>
-     
-           {/* Desktop Menu */}
-           <div className="hidden md:flex items-center space-x-8">
-             {["Home","Courses", "Academies", "Resources", "About"].map((item) => (
-               <a
-                 key={item}
-                 onClick={() => navigate(`/${item.toLowerCase()}`)}
-                 className="text-white hover:text-blue-200 transition-colors font-semibold text-lg"
-               >
-                 {item}
-               </a>
-             ))}
-     
-             {/* Search Button */}
-             <button
-               onClick={() => setShowSearch(!showSearch)}
-               className="text-white hover:text-blue-200 transition-colors"
-             >
-               <RiSearchLine className="h-6 w-6" />
-             </button>
-     
-             {/* Notification Button */}
-             <div className="relative">
-               <button className="text-white hover:text-blue-200 transition-colors">
-                 <RiNotificationLine className="h-6 w-6" />
-               </button>
-               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                 3
-               </span>
-             </div>
-     
-             {/* Get Started Button */}
-             <button
-               onClick={() => setShowLoginModal(true)}
-               className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-indigo-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
-             >
-               Get Started
-             </button>
-           </div>
-     
-           {/* Mobile Menu Toggle */}
-           <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-             {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
-           </button>
-         </div>
-     
-         {/* Mobile Menu */}
-         <AnimatePresence>
-           {isMenuOpen && (
-             <motion.div
-               initial={{ opacity: 0, height: 0 }}
-               animate={{ opacity: 1, height: "auto" }}
-               exit={{ opacity: 0, height: 0 }}
-               className="md:hidden bg-gradient-to-r from-blue-800 to-indigo-900 backdrop-blur-md border-t border-blue-700"
-             >
-               <div className="flex flex-col space-y-4 p-4">
-                 {["Courses", "Teachers", "Resources", "About"].map((item) => (
-                   <a
-                     key={item}
-                     href={`#${item.toLowerCase()}`}
-                     className="text-white hover:text-blue-200 font-medium text-lg"
-                   >
-                     {item}
-                   </a>
-                 ))}
-                 <button
-                   onClick={() => setShowLoginModal(true)}
-                   className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
-                 >
-                   Get Started
-                 </button>
-               </div>
-             </motion.div>
-           )}
-         </AnimatePresence>
-       </div>
-     
-       {/* Search Overlay */}
-       <AnimatePresence>
-         {showSearch && (
-           <motion.div
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             exit={{ opacity: 0 }}
-             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-           >
-             <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
-               <div className="flex items-center">
-                 <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
-                 <input
-                   type="text"
-                   placeholder="Search courses, teachers, or topics..."
-                   className="flex-1 outline-none text-lg"
-                   autoFocus
-                 />
-                 <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
-                   <RiCloseLine className="h-6 w-6" />
-                 </button>
-               </div>
-             </div>
-           </motion.div>
-         )}
-       </AnimatePresence>
-     </nav>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    isScrolled 
+      ? "bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md shadow-lg" 
+      : "bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md"
+  }`}>
+    {/* Rest of your navbar code remains the same, just updating the color-related classes */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex justify-between items-center h-20">
+        {/* Logo */}
+        <div className="flex items-center">
+    <div className="relative group">
+      <div className="flex items-center space-x-3">
+        {/* Main Logo Container */}
+        <div className="relative group cursor-pointer">
+          {/* Background glow effect */}
+          <div className="absolute inset-[-4px] bg-gradient-to-r from-rose-600/50 via-orange-500/50 to-amber-500/50 rounded-xl blur-md group-hover:blur-lg transition-all duration-500"></div>
+          
+          <div className="relative">
+            {/* Main logo shape - Made wider than height */}
+            <div className="relative w-16 h-12 bg-gradient-to-r from-rose-500 via-orange-500 to-amber-500 rounded-xl transform transition-all duration-500 group-hover:scale-105 shadow-lg group-hover:shadow-orange-500/50">
+              {/* Animated gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-xl animate-shine"></div>
+              
+              {/* Glass effect */}
+              <div className="absolute inset-[1px] bg-gradient-to-br from-white/20 to-transparent rounded-xl backdrop-blur-sm">
+                {/* Diagonal lines pattern */}
+                <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_2px,white_2px,white_3px)]"></div>
+              </div>
+              
+              {/* Center content with 3D effect */}
+              <div className="absolute inset-0 flex items-center justify-center transform transition-transform duration-500">
+                <span className="relative text-white text-2xl font-bold font-sans tracking-wider group-hover:scale-110">
+                  {/* Text shadow for 3D effect */}
+                  <span className="absolute -top-[1px] -left-[1px] text-orange-200/50">A</span>
+                  <span className="relative">A</span>
+                  <span className="absolute -bottom-[1px] -right-[1px] text-rose-700/50">A</span>
+                </span>
+              </div>
+  
+              {/* Animated border with gradient */}
+              <div className="absolute inset-0 rounded-xl border border-white/20 overflow-hidden">
+                <div className="absolute inset-0 animate-[spin_4s_linear_infinite] opacity-0 group-hover:opacity-100">
+                  <div className="w-full h-full rounded-xl border border-transparent border-t-white/40"></div>
+                </div>
+              </div>
+            </div>
+  
+            {/* Enhanced particles */}
+            <div className="absolute -top-1 -right-1 w-3 h-3">
+              <div className="absolute inset-0 bg-amber-400 rounded-full animate-ping opacity-75"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-amber-400 rounded-full animate-pulse"></div>
+            </div>
+            <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5">
+              <div className="absolute inset-0 bg-rose-400 rounded-full animate-pulse"></div>
+              <div className="absolute inset-0 bg-orange-400 rounded-full animate-ping opacity-75 delay-300"></div>
+            </div>
+  
+            {/* Sparkle effects */}
+            <div className="absolute -top-2 left-1/2 w-1 h-1 bg-white rounded-full animate-twinkle"></div>
+            <div className="absolute top-1/2 -right-2 w-1 h-1 bg-white rounded-full animate-twinkle delay-150"></div>
+          </div>
+        </div>
+  
+        {/* Text container with enhanced styling */}
+        <div className="relative">
+          <h1 className="text-3xl font-bold mb-0">
+            <span className="relative inline-block">
+              {/* Main text with vibrant gradient */}
+              <span className="bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 bg-clip-text text-transparent font-sans">
+                Azad
+              </span>
+              {/* Enhanced glow effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 blur-md opacity-50 bg-clip-text text-transparent animate-pulse">
+                Azad
+              </span>
+              {/* Animated underline with gradient */}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-rose-400 via-orange-400 to-amber-400 group-hover:w-full transition-all duration-700"></span>
+            </span>
+          </h1>
+          <p className="text-sm font-medium tracking-wide">
+            <span className="bg-gradient-to-r from-rose-200 via-orange-200 to-amber-200 bg-clip-text text-transparent">
+              Education
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+        {/* Desktop Menu - Updated hover colors */}
+        <div className="hidden md:flex items-center space-x-8">
+          {["Home", "Courses", "Academies", "Resources", "About"].map((item) => (
+            <a
+              key={item}
+              onClick={() => navigate(`/${item.toLowerCase()}`)}
+              className="text-white hover:text-emerald-200 transition-colors font-semibold text-lg"
+            >
+              {item}
+            </a>
+          ))}
+  
+          {/* Search Button */}
+          <button
+            onClick={() => setShowSearch(!showSearch)}
+            className="text-white hover:text-emerald-200 transition-colors"
+          >
+            <RiSearchLine className="h-6 w-6" />
+          </button>
+  
+          {/* Notification Button */}
+          <div className="relative">
+            <button className="text-white hover:text-emerald-200 transition-colors">
+              <RiNotificationLine className="h-6 w-6" />
+            </button>
+            <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+              3
+            </span>
+          </div>
+  
+          {/* Get Started Button - Updated gradient */}
+          <button
+            onClick={() => setShowLoginModal(true)}
+            className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full hover:from-emerald-600 hover:to-blue-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
+          >
+            Get Started
+          </button>
+        </div>
+  
+        {/* Mobile Menu Toggle */}
+        <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <RiCloseLine className="h-6 w-6" /> : <RiMenuLine className="h-6 w-6" />}
+        </button>
+      </div>
+  
+      {/* Mobile Menu - Updated gradient */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-gradient-to-r from-emerald-600 to-blue-600 backdrop-blur-md border-t border-emerald-500"
+          >
+            <div className="flex flex-col space-y-4 p-4">
+              {["Courses", "Teachers", "Resources", "About"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-white hover:text-emerald-200 font-medium text-lg"
+                >
+                  {item}
+                </a>
+              ))}
+              <button
+                onClick={() => setShowLoginModal(true)}
+                className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl"
+              >
+                Get Started
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  
+    {/* Search Overlay - No color changes needed */}
+    <AnimatePresence>
+      {showSearch && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+        >
+          <div className="bg-white p-6 rounded-lg w-full max-w-2xl mx-4 shadow-2xl">
+            <div className="flex items-center">
+              <RiSearchLine className="text-gray-400 mr-3 h-6 w-6" />
+              <input
+                type="text"
+                placeholder="Search courses, teachers, or topics..."
+                className="flex-1 outline-none text-lg"
+                autoFocus
+              />
+              <button onClick={() => setShowSearch(false)} className="text-gray-400 hover:text-gray-600">
+                <RiCloseLine className="h-6 w-6" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </nav>
   );
 };
 
@@ -897,201 +953,217 @@ const resetFilters = () => {
     });
   };
 // Search and Filter Component
-const SearchFilters = ({ filters, setFilters }) => {
-
+const SearchFilters = ({ filters, setFilters, currentUser, currentTime, resetFilters }) => {
   const [activeCategory, setActiveCategory] = useState(null);
+  const [availableCities, setAvailableCities] = useState([]);
   const selectRef = useRef(null);
 
   useEffect(() => {
     if (activeCategory && selectRef.current) {
-      selectRef.current.focus(); // Automatically opens dropdown
+      selectRef.current.focus();
     }
   }, [activeCategory]);
-return (
-  <motion.div
-  initial={{ opacity: 0, y: -20 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: -20 }}
-  className="bg-white rounded-3xl fonting shadow-2xl p-8 mb-8 mt-12"
->
-  {/* Enhanced Header with Time and User Info */}
-  <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-gray-100">
-    <div className="flex items-center space-x-4 mb-4 md:mb-0">
-      <div className="p-3 bg-blue-50 rounded-2xl">
-        <FiFilter className="text-2xl text-blue-600" />
-      </div>
-      <div>
-        <h2 className="text-2xl font-bold text-gray-800">Search Filters</h2>
-        <p className="text-gray-500 text-sm mt-1">Find your perfect match</p>
-      </div>
-    </div>
-
-    <div className="flex flex-wrap gap-4">
-      {/* User Info */}
-      <div className="flex items-center bg-gray-50 rounded-xl px-4 py-2">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white font-semibold">
-          {currentUser[0].toUpperCase()}
-        </div>
-        <span className="ml-3 text-gray-700 font-medium">{currentUser}</span>
-      </div>
-
-      {/* Time */}
-      <div className="flex items-center bg-gray-50 rounded-xl px-4 py-2">
-        <FiClock className="text-gray-400" />
-        <span className="ml-2 text-gray-600 text-sm">{currentTime}</span>
-      </div>
-
-      {/* Reset Button */}
-      <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        onClick={resetFilters}
-        className="flex items-center space-x-2 px-4 py-2 bg-gray-50 hover:bg-gray-100 
-          rounded-xl text-gray-700 font-medium transition-all duration-200"
-      >
-        <FiRefreshCw className="text-blue-500" />
-        <span>Reset</span>
-      </motion.button>
-    </div>
-  </div>
-
-  {/* Main Search Bar */}
-  <div className="mb-8">
-    <div className="relative">
-      <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-        <FiSearch className="text-xl text-gray-400" />
-      </div>
-      <input
-        type="text"
-        placeholder="Search courses, instructors, or keywords..."
-        value={filters.search}
-        onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-        className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-100 rounded-2xl
-          focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10
-          text-gray-700 placeholder-gray-400 transition-all duration-200"
-      />
-    </div>
-  </div>
-
-  {/* Filter Categories */}
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-    {Object.keys(filterOptions).map((category, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className={`p-4 rounded-2xl cursor-pointer transition-all duration-200
-           ${activeCategory === category 
-            ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
-            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'}`}
-        onClick={() => setActiveCategory(category)}
-      >
-        <div className="flex items-center space-x-3">
-          <FiFilter className={`text-xl ${activeCategory === category ? 'text-white' : 'text-blue-500'}`} />
-          <span className="font-medium">{category.charAt(0).toUpperCase() + category.slice(1)}</span>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-
-  {/* Filter Options Above */}
-  {activeCategory && (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        className="mb-8"
-      >
-        <SelectField
-          label={activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}
-          icon={FiFilter}
-          value={filters[activeCategory]}
-          onChange={(e) => setFilters({ ...filters, [activeCategory]: e.target.value })}
-          options={filterOptions[activeCategory]}
-        />
-      </motion.div>
-    </AnimatePresence>
-  )}
-
-  {/* Active Filters */}
-  <AnimatePresence>
-    {Object.entries(filters).some(([_, value]) => value) && (
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 10 }}
-        className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-gray-100"
-      >
-        {Object.entries(filters).map(([key, value]) =>
-          value ? (
-            <motion.span
-              key={key}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="flex items-center space-x-2 px-4 py-2 bg-blue-50 
-                text-blue-600 rounded-xl text-sm font-medium"
-            >
-              <span>{value}</span>
-              <button
-                onClick={() => setFilters({ ...filters, [key]: "" })}
-                className="hover:text-blue-800"
-              >
-                <FiX className="text-xs" />
-              </button>
-            </motion.span>
-          ) : null
-        )}
-      </motion.div>
-    )}
-  </AnimatePresence>
-</motion.div>
-
-)}
-const SelectField = ({ icon: Icon, value, onChange, options }) => {
-  const selectRef = useRef(null);
-  const [activeCategory, setActiveCategory] = useState(true);
-
 
   useEffect(() => {
-    if (activeCategory && selectRef.current) {
-      selectRef.current.focus(); 
-      selectRef.current.size = options.length; // Show all options
+    if (filters.province) {
+      setAvailableCities(filterOptions.cityByProvince[filters.province] || []);
+      setFilters((prev) => ({ ...prev, city: "" }));
+    } else {
+      setAvailableCities([]);
     }
-  }, [activeCategory, options]);
+  }, [filters.province, setFilters]);
+
+  const SelectField = ({ label, icon: Icon, value, onChange, options }) => {
+    const isDisabled = label.toLowerCase() === "city" && !filters.province;
+
+    return (
+      <div className="relative">
+        <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+        <div className="relative">
+          <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+            <Icon className="text-gray-400" />
+          </div>
+          <select
+            ref={label.toLowerCase() === activeCategory?.toLowerCase() ? selectRef : null}
+            value={value}
+            onChange={onChange}
+            disabled={isDisabled}
+            className={`w-full pl-12 pr-4 py-3 bg-gray-50 border-2 border-gray-100 rounded-xl
+              focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10
+              text-gray-700 appearance-none cursor-pointer transition-all duration-200
+              ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            {options.map((option, index) => (
+              <option key={index} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    );
+  };
+
   return (
-  <div className="relative group">
-    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full 
-      bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-colors duration-300">
-      <Icon className="text-lg text-indigo-400" />
-    </div>
-    <select
-      value={value}
-      ref={selectRef}
-      onChange={onChange}
-      className="w-full pl-16 pr-10 py-4 bg-[#1e1b4b]/50 border-2 border-indigo-500/20 rounded-xl
-        focus:bg-[#1e1b4b]/70 focus:border-indigo-500/40 focus:ring-2 focus:ring-indigo-500/20
-        text-gray-200 appearance-none cursor-pointer transition-all duration-300
-        hover:border-indigo-500/30 shadow-inner shadow-black/10"
-        onFocus={() => setActiveCategory(true)} // Keep it open
-        onBlur={() => setActiveCategory(false)} // Close on blur
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="bg-white rounded-3xl shadow-2xl p-8 mb-8 mt-12"
     >
-      {options.map(option => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-    <div className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full 
-      bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-colors duration-300 pointer-events-none">
-      <svg className="w-4 h-4 text-indigo-400" viewBox="0 0 20 20">
-        <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" strokeWidth="1.5" stroke="currentColor" fill="none"/>
-      </svg>
-    </div>
-  </div>
-)}
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-gray-100">
+        <div className="flex items-center space-x-4 mb-4 md:mb-0">
+          <div className="p-3 bg-blue-50 rounded-2xl">
+            <FiFilter className="text-2xl text-blue-600" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800">Search Filters</h2>
+            <p className="text-gray-500 text-sm mt-1">Find your perfect match</p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          {/* User Info */}
+          <div className="flex items-center bg-gray-50 rounded-xl px-4 py-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white font-semibold">
+              {currentUser?.[0]?.toUpperCase()}
+            </div>
+            <span className="ml-3 text-gray-700 font-medium">{"huzaifa8883"}</span>
+          </div>
+
+          {/* Time */}
+          <div className="flex items-center bg-gray-50 rounded-xl px-4 py-2">
+            <FiClock className="text-gray-400" />
+            <span className="ml-2 text-gray-600 text-sm">{currentTime}</span>
+          </div>
+
+          {/* Reset Button */}
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={resetFilters}
+            className="flex items-center space-x-2 px-4 py-2 bg-gray-50 hover:bg-gray-100 rounded-xl text-gray-700 font-medium transition-all duration-200"
+          >
+            <FiRefreshCw className="text-blue-500" />
+            <span>Reset</span>
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Search Bar */}
+      <div className="mb-8">
+        <div className="relative">
+          <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+            <FiSearch className="text-xl text-gray-400" />
+          </div>
+          <input
+            type="text"
+            placeholder="Search courses, instructors, or keywords..."
+            value={filters.search}
+            onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+            className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 text-gray-700 placeholder-gray-400 transition-all duration-200"
+          />
+        </div>
+      </div>
+
+      {/* Filter Categories */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {['category', 'level', 'ageGroup', 'duration', 'price', 'schedule'].map((category, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className={`p-4 rounded-2xl cursor-pointer transition-all duration-200
+              ${activeCategory === category 
+                ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/25'
+                : 'bg-gray-50 text-gray-600 hover:bg-gray-100'}`}
+            onClick={() => setActiveCategory(category)}
+          >
+            <div className="flex items-center space-x-3">
+              <FiFilter className={`text-xl ${activeCategory === category ? 'text-white' : 'text-blue-500'}`} />
+              <span className="font-medium">
+                {category === 'ageGroup' ? 'Age Group' : category.charAt(0).toUpperCase() + category.slice(1)}
+              </span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Province and City Selection */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <SelectField
+          label="Province"
+          icon={FiFilter}
+          value={filters.province}
+          onChange={(e) => setFilters({ ...filters, province: e.target.value })}
+          options={filterOptions.province}
+        />
+
+        <SelectField
+          label="City"
+          icon={FiFilter}
+          value={filters.city}
+          onChange={(e) => setFilters({ ...filters, city: e.target.value })}
+          options={availableCities}
+        />
+      </div>
+
+      {/* Active Category Options */}
+      {activeCategory && (
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mb-8"
+          >
+            <SelectField
+              label={activeCategory === 'ageGroup' ? 'Age Group' : activeCategory.charAt(0).toUpperCase() + activeCategory.slice(1)}
+              icon={FiFilter}
+              value={filters[activeCategory]}
+              onChange={(e) => setFilters({ ...filters, [activeCategory]: e.target.value })}
+              options={filterOptions[activeCategory]}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
+
+      {/* Active Filters */}
+      <AnimatePresence>
+        {Object.entries(filters).some(([_, value]) => value) && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-gray-100"
+          >
+            {Object.entries(filters).map(([key, value]) =>
+              value ? (
+                <motion.span
+                  key={key}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  className="flex items-center space-x-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-xl text-sm font-medium"
+                >
+                  <span>{value}</span>
+                  <button
+                    onClick={() => setFilters({ ...filters, [key]: "" })}
+                    className="hover:text-blue-800"
+                  >
+                    <FiX className="text-xs" />
+                  </button>
+                </motion.span>
+              ) : null
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 const filterCategories = [
   { name: 'All', icon: FiGrid },
