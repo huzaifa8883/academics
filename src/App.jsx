@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import CountUp from "react-countup";
 import "slick-carousel/slick/slick.css";
+import {Link} from "react-router-dom"
 import pakistanCities from "./pakistanCities";
 import "slick-carousel/slick/slick-theme.css";
 const categories = [
@@ -620,12 +621,14 @@ function App() {
            </div>
    
            {/* Get Started Button - Updated gradient */}
+           <Link to="/signup">
            <button
              onClick={() => setShowLoginModal(true)}
              className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-6 py-2 rounded-full hover:from-emerald-600 hover:to-blue-600 transition-colors font-semibold shadow-lg hover:shadow-xl"
            >
              Get Started
            </button>
+           </Link>
          </div>
    
          {/* Mobile Menu Toggle */}

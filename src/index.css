@@ -473,4 +473,80 @@
   }
   
   /* Add to your tailwind.config.js */
- 
+ @keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.input-shimmer {
+  background: linear-gradient(
+    to right,
+    rgba(139, 92, 246, 0.1) 8%,
+    rgba(139, 92, 246, 0.2) 18%,
+    rgba(139, 92, 246, 0.1) 33%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.floating-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar for textarea */
+textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #8b5cf6;
+  border-radius: 3px;
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Focus animation */
+.focus-scale {
+  transition: transform 0.2s ease;
+}
+
+.focus-scale:focus-within {
+  transform: scale(1.01);
+}
+
+/* Placeholder animation */
+@keyframes placeholderShimmer {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+::placeholder {
+  animation: placeholderShimmer 2s infinite;
+}
