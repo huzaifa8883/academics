@@ -10,6 +10,7 @@ import TeacherProfile from "./Teacherprofile.jsx";
 import ParentResourcesPage from "./Resourses"
 import AboutUs from "./About.jsx";
 import Signup from "./Signup.jsx"
+import Admin from "./Adminpanel.jsx"
 // Router banayein
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
     {
         path:"/resources",
         element:<ParentResourcesPage />,
+    },
+    {
+        path:"/admin",
+        element:<Admin />,
     },
     {
         path:"/about",

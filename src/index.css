@@ -550,3 +550,10 @@ textarea::-webkit-scrollbar-thumb:hover {
 ::placeholder {
   animation: placeholderShimmer 2s infinite;
 }
+.dark {
+  @apply bg-gray-900 text-white;
+}
+
+.dark .bg-white {
+  @apply bg-gray-800 border-gray-700;
+}
